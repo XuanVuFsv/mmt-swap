@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "es2020",
+    "declaration": true,
+    "outDir": "dist/",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs",
+      "types": ["jest"]
+    }
+  },
+  "include": ["src/**/*", "scripts", "tests/*.ts", "examples/*.ts"]
+}
