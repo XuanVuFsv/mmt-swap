@@ -11,7 +11,7 @@ const loopCount = 2; //Số lần swap
 export async function main(isXtoY) {
   // Initialize SDK
   const sdk = MmtSDK.NEW({
-    network: 'mainnet',
+    network: 'testnet',
   });
 
   //-----------CONFIG---------------
@@ -19,18 +19,18 @@ export async function main(isXtoY) {
   const swapAmount = '1'; //Số token mỗi lần swap
 
   // Define the liquidity pool ID
-  const poolId = '0xb0a595cb58d35e07b711ac145b4846c8ed39772c6d6f6716d89d71c64384543b'; //suiUSDT-suiUSDC
+  // const poolId = '0xb0a595cb58d35e07b711ac145b4846c8ed39772c6d6f6716d89d71c64384543b'; //suiUSDT-suiUSDC
   // Các pool khác xem tại https://developers.mmt.finance/clmm-smart-contracts/deployments
   //-------------------------------
 
-  const signer = Ed25519Keypair.fromSecretKey(key);
-  // const senderAddress = '0xae55cde531ea8d707e69011301e78b2f21e6a0e1094e60033ab93a8e894e6871';
-  const senderAddress = signer.toSuiAddress();
+  // const signer = Ed25519Keypair.fromSecretKey(key);
+  const senderAddress = '0xae55cde531ea8d707e69011301e78b2f21e6a0e1094e60033ab93a8e894e6871';
+  // const senderAddress = signer.toSuiAddress();
 
   // Create a new transaction instance
   const tx = new Transaction();
 
-  // const poolId = '0x53ceda0bbe1bdb3c1c0b1c53ecb49856f135a9fffc91e5a50aa4045a3f8240f7'; //MMT/USDC
+  const poolId = '0x53ceda0bbe1bdb3c1c0b1c53ecb49856f135a9fffc91e5a50aa4045a3f8240f7'; //MMT/USDC
   // const poolId = '0xaa740e3d58ecfd2323eb5ab4cedab5f07554385d96aea2d5050471aba1e2e0ea' //DEEP/SUI
   // const poolId = '0xf0d3fa213889a7c2bc79505c030b6a105d549e6608aeab201811af333f9b18a4' //DEEP/USDC
 
@@ -111,9 +111,9 @@ export async function main(isXtoY) {
     tx,
     sdk,
     execution: {
-      dryRun: false, // Change to false to actually submit
-      // address: senderAddress,
-      signer: signer, // Uncomment this line if dryRun = false
+      dryRun: true, // Change to false to actually submit
+      address: senderAddress,
+      // signer: signer, // Uncomment this line if dryRun = false
     },
   });
 
